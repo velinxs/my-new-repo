@@ -1,0 +1,25 @@
+{
+  "name": "proof-of-work-token-backend",
+  "version": "1.0.0",
+  "description": "Backend for Proof of Useful Work Token - AI labor backed cryptocurrency",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "init-db": "node db/init.js",
+    "worker": "node services/worker.js"
+  },
+  "keywords": ["crypto", "ai", "proof-of-work", "blockchain"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ethers": "^6.9.0",
+    "dotenv": "^16.3.1",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.1",
+    "cors": "^2.8.5"
+  }
+}
