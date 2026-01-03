@@ -47,5 +47,6 @@ temp/
 # Private keys and sensitive data
 *.key
 *.pem
+agent-keys.json
 private/
 secrets/

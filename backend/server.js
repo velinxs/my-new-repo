@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import taskRoutes from './routes/tasks.js';
+import privacyRoutes from './routes/privacy.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/tasks', taskRoutes);
+app.use('/api/privacy', privacyRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
@@ -34,15 +36,25 @@ app.get('/health', (req, res) => {
 app.get('/', (req, res) => {
   res.json({
     name: 'Proof of Useful Work Token API',
-    version: '1.0.0',
-    description: 'AI labor backed cryptocurrency - MVP',
+    version: '2.0.0',
+    description: 'AI labor backed cryptocurrency with privacy features',
     endpoints: {
       health: 'GET /health',
       createTask: 'POST /api/tasks',
       getTask: 'GET /api/tasks/:id',
       listTasks: 'GET /api/tasks',
       completeTask: 'POST /api/tasks/:id/complete',
-      agentStats: 'GET /api/tasks/stats/agent/:wallet'
+      agentStats: 'GET /api/tasks/stats/agent/:wallet',
+      agentCapabilities: 'GET /api/privacy/agent/capabilities',
+      agentPublicKey: 'GET /api/privacy/agent/public-key',
+      encrypt: 'POST /api/privacy/encrypt',
+      decrypt: 'POST /api/privacy/decrypt',
+      generateKeys: 'POST /api/privacy/generate-keys'
+    },
+    features: {
+      privacy: 'E2E encryption for private tasks',
+      uncensored: 'Local LLM support (no content filtering)',
+      decentralized: 'Multi-agent capable'
     }
   });
 });
